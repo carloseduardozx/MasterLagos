@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviço - Rochas</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ---------- MENU ---------- */
+        .navbar {
+            background: #0a0a0a;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* ---------- GALERIA ---------- */
+        .galeria-container {
+            margin: 45px 0;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .galeria-grid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .galeria-grid img:hover {
+            transform: scale(1.06);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ---------- LIGHTBOX (FULLSCREEN FIXED) ---------- */
+        .lightbox {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999 !important;
+            overflow: hidden;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+        }
+
+        /* ---------- DESCRIÇÃO ---------- */
+        .descricao-box {
+            background: #f3f3f3;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            margin-top: 40px;
+        }
+
+        /* ---------- RODAPÉ ---------- */
+        .footer {
+            background: #111;
+            color: #fff;
+            padding: 25px 0 10px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <nav class="navbar navbar-expand-lg px-3">
+        <a class="navbar-brand" href="index.html">Master Lagos</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuMobile">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuMobile">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Início</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <div class="container conteudo">
+
+        <h1 class="text-center mb-4 mt-4">Rochas Artificiais</h1>
+
+        <!-- GALERIA -->
+        <div class="galeria-container">
+            <h2 class="text-center mb-4">Galeria</h2>
+
+            <div class="galeria-grid">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+                <img src="imagens/lagos/lago1.png" onclick="abrirLightbox(this.src)">
+            </div>
+        </div>
+
+        <!-- LIGHTBOX -->
+        <div id="lightbox" class="lightbox" onclick="fecharLightbox()">
+            <img id="lightbox-img" src="">
+        </div>
+
+        <!-- DESCRIÇÃO -->
+        <div class="descricao-box">
+            <h4>Rochas Artificiais</h4>
+            <p>
+                As rochas artificiais oferecem versatilidade, resistência e beleza estética para composições paisagísticas e decorativas. Produzidas com materiais de alta durabilidade e técnicas que reproduzem fielmente texturas e formatos naturais, proporcionam um visual autêntico e harmonioso em qualquer ambiente.
+Podem ser personalizadas em tamanho, cor e estilo, atendendo às preferências do cliente e às necessidades do projeto. Ideais para lagos, cascatas, jardins, grutas e áreas externas, as rochas artificiais valorizam o espaço com elegância, funcionalidade e integração perfeita com a natureza.
+            </p>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Master Lagos</h3>
+                    <p>Transformando espaços em paraísos naturais.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: maico_kleber@hotmail.com</p>
+                    <p>Telefone: (17) 98179-5277</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <ul class="social-links">
+                        <li><a href="https://www.facebook.com/share/1PfuQaUUTx/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/masterlagos_barretos?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/17981795277"><i class="fab fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Master Lagos. Todos os direitos reservados.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JS BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- LIGHTBOX SCRIPT -->
+    <script>
+        function abrirLightbox(src) {
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function fecharLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
