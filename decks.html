@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviço - Decks</title>
+    <title>Decks de Madeira | Master Lagos</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -16,27 +16,30 @@
 
     <!-- Conteúdo principal da página -->
     <div class="container conteudo">
-        <h1>Decks de Madeira</h1>
+        <!-- Adicionando animação AOS ao título -->
+        <h1 data-aos="fade-up">Decks de Madeira</h1>
 
         <div class="galeria-container">
-            <h2>Galeria</h2>
+            <!-- Adicionando animação AOS ao título da galeria -->
+            <h2 data-aos="fade-up">Galeria</h2>
             <div class="galeria-grid">
-                <!-- IMPORTANTE: Substitua os caminhos das imagens abaixo -->
-                <img src="imagens/decks/decks1.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 1">
-                <img src="imagens/decks/decks2.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 2">
-                <img src="imagens/decks/decks3.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 3">
-                <img src="imagens/decks/decks4.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 4">
-                <img src="imagens/decks/decks5.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 5">
-                <img src="imagens/decks/decks6.jpg" onclick="abrirLightbox(this.src)" alt="Deck de madeira 6">
+                <!-- IMPORTANTE: A MUDANÇA ESTÁ AQUI - TROQUEI this.src POR this -->
+                <img src="imagens/decks/decks1.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 1" data-aos="zoom-in" data-aos-delay="100">
+                <img src="imagens/decks/decks2.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 2" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagens/decks/decks3.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 3" data-aos="zoom-in" data-aos-delay="300">
+                <img src="imagens/decks/decks4.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 4" data-aos="zoom-in" data-aos-delay="400">
+                <img src="imagens/decks/decks5.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 5" data-aos="zoom-in" data-aos-delay="500">
+                <img src="imagens/decks/decks6.jpg" onclick="abrirLightbox(this)" loading="lazy" alt="Deck de madeira 6" data-aos="zoom-in" data-aos-delay="600">
             </div>
         </div>
 
-        <!-- Estrutura do Lightbox (já está no seu styles.css) -->
+        <!-- Estrutura do Lightbox -->
         <div id="lightbox" class="lightbox" onclick="fecharLightbox()">
             <img id="lightbox-img" src="" alt="Imagem ampliada">
         </div>
 
-        <div class="descricao-box">
+        <!-- Adicionando animação AOS à caixa de descrição -->
+        <div class="descricao-box" data-aos="fade-up">
             <h4>Decks de Madeira</h4>
             <p>
                 Os decks de madeira oferecem elegância, conforto e funcionalidade para áreas externas e internas. Produzidos com madeiras de alta qualidade e tratadas para maior resistência, são instalados com precisão para garantir segurança, durabilidade e acabamento impecável.
@@ -53,30 +56,71 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Script da Biblioteca AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        // Função para carregar um componente HTML em um placeholder
+        // ===================================================================
+        // SCRIPTS DO LIGHTBOX (COM NAVEGAÇÃO POR TECLADO)
+        // ===================================================================
+        let currentImageIndex = 0;
+        let imagesInGallery = [];
+
+        function abrirLightbox(clickedImg) {
+            const gallery = clickedImg.closest('.galeria-grid');
+            imagesInGallery = Array.from(gallery.querySelectorAll('img')).map(img => img.src);
+            currentImageIndex = imagesInGallery.indexOf(clickedImg.src);
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imagesInGallery[currentImageIndex];
+            lightbox.style.display = 'flex';
+        }
+
+        function fecharLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + imagesInGallery.length) % imagesInGallery.length;
+            document.getElementById('lightbox-img').src = imagesInGallery[currentImageIndex];
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % imagesInGallery.length;
+            document.getElementById('lightbox-img').src = imagesInGallery[currentImageIndex];
+        }
+
+        document.addEventListener('keydown', (event) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'flex') {
+                switch (event.key) {
+                    case 'Escape': fecharLightbox(); break;
+                    case 'ArrowLeft': showPrevImage(); break;
+                    case 'ArrowRight': showNextImage(); break;
+                }
+            }
+        });
+
+
+        // ===================================================================
+        // SCRIPTS DE CARREGAMENTO E FUNCIONALIDADES GERAIS
+        // ===================================================================
+        // Função para carregar um componente HTML em um placeholder (COM SHIMMER)
         async function loadComponent(url, placeholderId) {
+            const placeholder = document.getElementById(placeholderId);
+            placeholder.classList.add('shimmer');
             try {
                 const response = await fetch(url);
                 const html = await response.text();
-                document.getElementById(placeholderId).innerHTML = html;
+                placeholder.innerHTML = html;
+                placeholder.classList.remove('shimmer');
             } catch (error) {
                 console.error(`Erro ao carregar o componente ${url}:`, error);
+                placeholder.classList.remove('shimmer');
             }
         }
 
-        // Função para abrir o lightbox
-        function abrirLightbox(src) {
-            document.getElementById("lightbox-img").src = src;
-            document.getElementById("lightbox").style.display = "flex";
-        }
-
-        // Função para fechar o lightbox
-        function fecharLightbox() {
-            document.getElementById("lightbox").style.display = "none";
-        }
-        
-        // Função para alternar o menu lateral
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             if (sidebar) {
@@ -84,30 +128,35 @@
             }
         }
 
-        // Quando a página termina de carregar...
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Carrega o header e o footer
+            // 1. Inicializa a biblioteca AOS
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            // 2. Carrega o header e o footer
             loadComponent('header.html', 'header-placeholder');
             loadComponent('footer.html', 'footer-placeholder');
 
-            // Pega o elemento do botão "Voltar ao Topo"
+            // 3. Pega o elemento do botão "Voltar ao Topo"
             const backToTopButton = document.getElementById('back-to-top');
 
-            // 2. Adiciona um único listener para o evento de scroll
+            // 4. Adiciona um único listener para o evento de scroll
             window.addEventListener('scroll', () => {
                 // Lógica para mostrar/esconder o botão "Voltar ao Topo"
-                if (window.scrollY > 300) { // Mostra o botão após rolar 300px
+                if (window.scrollY > 300) {
                     backToTopButton.classList.add('visible');
                 } else {
                     backToTopButton.classList.remove('visible');
                 }
             });
 
-            // 3. Adiciona o listener de clique no botão "Voltar ao Topo"
+            // 5. Adiciona o listener de clique no botão "Voltar ao Topo"
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth' // Rolagem suave
+                    behavior: 'smooth'
                 });
             });
         });

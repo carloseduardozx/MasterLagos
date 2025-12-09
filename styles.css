@@ -1,6 +1,8 @@
 /* ===================================================================
    CONFIGURAÇÕES GERAIS E RESET
    =================================================================== */
+@import url("https://unpkg.com/aos@2.3.1/dist/aos.css");
+
 * {
     margin: 0;
     padding: 0;
@@ -32,6 +34,24 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #3a5545;
+}
+
+/* ===================================================================
+   LOADING STATE (EFEITO SHIMMER)
+   =================================================================== */
+.shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 
@@ -294,7 +314,7 @@ html {
 .service-ball:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    background-color: #3a5545;
+    background-color: #1a3d28;
 }
 
 .service-ball.large { width: 180px; height: 180px; }
@@ -488,11 +508,6 @@ html {
 /* Animações */
 @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-.fade-in { animation: fadeIn 1s ease-out forwards; }
-section:not(.image-section) { opacity: 0; } /* Esconder seções para animação de scroll */
-
 
 /* ===================================================================
    RESPONSIVIDADE

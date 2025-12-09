@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Lagos</title>
+    <title>Master Lagos | Projetos Personalizados</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-    <button id="back-to-top" aria-label="Voltar ao topo">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 <body>
 
     <!-- Placeholder para o Header e Menu -->
@@ -22,10 +19,10 @@
         <div class="logo-container">
             <img src="imagens/logocerta.png" alt="Logo da Empresa" class="logo">
             <div class="hero-text">
-                <h1>Transforme espaços em paraísos naturais</h1>
-                <h1>criando cenários únicos e um ambiente</h1>
-                <h1>mais vivo!</h1>
-                <p class="description">
+                <h1 data-aos="fade-up" data-aos-delay="100">Transforme espaços em paraísos naturais</h1>
+                <h1 data-aos="fade-up" data-aos-delay="200">criando cenários únicos e um ambiente</h1>
+                <h1 data-aos="fade-up" data-aos-delay="300">mais vivo!</h1>
+                <p class="description" data-aos="fade-up" data-aos-delay="400">
                     A Master Lagos é uma empresa que visa transformar áreas externas, como jardins e pátios, em espaços mais bonitos e relaxantes, usando lagos artificiais, decks de madeira, pergolados, piscinas naturais e paisagismo. O objetivo da Master Lagos é criar espaços ao ar livre que proporcionem conforto, beleza e conexão com a natureza. A empresa procura desenvolver soluções para tornar o seu ambiente mais agradável!
                 </p>
             </div>
@@ -36,15 +33,15 @@
     <section class="image-section">
         <div class="container">
             <div class="image-content">
-                <div class="image-wrapper">
+                <div class="image-wrapper" data-aos="fade-right">
                     <img src="imagens/inicio1.png" alt="Imagem ilustrativa">
                 </div>
-                <div class="text-content">
+                <div class="text-content" data-aos="fade-left">
                     <h2>Torne o seu sonho realidade com a Master Lagos</h2>
                     <p>
                         Oferecemos soluções personalizadas para criar ambientes únicos e cheios de beleza. Desde lagos artificiais até paisagismo, nossa equipe está pronta para transformar seu espaço em um verdadeiro paraíso natural.
                     </p>
-                    <a href="https://wa.me/17981795277" target="_blank" class="whatsapp-button">
+                    <a href="https://wa.me/17981795277" target="_blank" class="whatsapp-button" data-aos="zoom-in" data-aos-delay="200">
                         <i class="fab fa-whatsapp"></i>
                         <span>Faça um Orçamento</span>
                     </a>
@@ -56,35 +53,35 @@
    <!-- Seção Serviços -->
 <section class="services-section" id="servicos">
     <div class="container">
-        <h2>Nossos Serviços</h2>
+        <h2 data-aos="fade-up">Nossos Serviços</h2>
 
         <div class="services-grid">
 
-            <a href="lagos.html" class="service-ball large">
+            <a href="lagos.html" class="service-ball large" data-aos="zoom-in" data-aos-delay="100">
                 Lagos Artificiais
             </a>
 
-            <a href="decks.html" class="service-ball medium">
+            <a href="decks.html" class="service-ball medium" data-aos="zoom-in" data-aos-delay="200">
                 Decks de Madeira
             </a>
 
-            <a href="pergolados.html" class="service-ball small">
+            <a href="pergolados.html" class="service-ball small" data-aos="zoom-in" data-aos-delay="300">
                 Pergolados
             </a>
 
-            <a href="piscinas.html" class="service-ball medium">
+            <a href="piscinas.html" class="service-ball medium" data-aos="zoom-in" data-aos-delay="400">
                 Piscinas Naturais
             </a>
 
-            <a href="paineis.html" class="service-ball large">
+            <a href="paineis.html" class="service-ball large" data-aos="zoom-in" data-aos-delay="500">
                 Painéis de Madeira
             </a>
 
-            <a href="grutas.html" class="service-ball small">
+            <a href="grutas.html" class="service-ball small" data-aos="zoom-in" data-aos-delay="600">
                 Grutas
             </a>
 
-            <a href="rochas.html" class="service-ball medium">
+            <a href="rochas.html" class="service-ball medium" data-aos="zoom-in" data-aos-delay="700">
                 Rochas Artificiais
             </a>
 
@@ -96,14 +93,14 @@
     <section class="about-section" id="sobre">
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text" data-aos="fade-right">
                     <h2>Sobre Nós</h2>
                     <p>A Master Lagos é uma empresa especializada em transformar ambientes em verdadeiros paraísos naturais. Atuamos sempre com alta qualidade e dedicação!</p>
                     <p>Nosso objetivo é ajudar nossos clientes a criar ambientes que atendam às suas necessidades e desejos, garantindo um resultado final que combine funcionalidade, estética e harmonia. Cada projeto é feito com muito cuidado, desde o planejamento até a execução, para que o espaço final seja exatamente o que você imaginou.</p>
                     <p>Venha conhecer nossos projetos realizados e descobrir como podemos transformar o seu ambiente em um lugar único e especial. Estamos prontos para tornar o seu sonho realidade!</p>
                 </div>
 
-                <div class="about-map">
+                <div class="about-map" data-aos="fade-left">
                     <h2>Nossa Localização</h2>
                     <div class="map-container">
                         <iframe
@@ -125,80 +122,80 @@
     <!-- Placeholder para o Footer -->
     <div id="footer-placeholder"></div>
 
-<script>
-    // Função para carregar um componente HTML em um placeholder
-    async function loadComponent(url, placeholderId) {
-        try {
-            const response = await fetch(url);
-            const html = await response.text();
-            document.getElementById(placeholderId).innerHTML = html;
-        } catch (error) {
-            console.error(`Erro ao carregar o componente ${url}:`, error);
-        }
-    }
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    // Função para o menu (será chamada pelo onclick no header.html)
-    function toggleSidebar() {
-        const sidebar = document.getElementById("sidebar");
-        if (sidebar) {
-            sidebar.classList.toggle("active");
-        }
-    }
+    <!-- Script da Biblioteca AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    // Função para verificar se o elemento está visível na tela
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.bottom > 0
-        );
-    }
+    <script>
+// Função para carregar um componente HTML em um placeholder
+async function loadComponent(url, placeholderId) {
+    const placeholder = document.getElementById(placeholderId);
+    
+    // 1. Adiciona a classe de loading ANTES de carregar
+    placeholder.classList.add('shimmer');
 
-    // Função para adicionar a animação de fade-in ao rolar a página
-    function handleScroll() {
-        const sections = document.querySelectorAll('section.services-section, section.about-section');
-        sections.forEach(section => {
-            if (isInViewport(section) && !section.classList.contains('fade-in')) {
-                section.classList.add('fade-in');
-            }
-        });
-    }
-
-    // Quando a página termina de carregar...
-    document.addEventListener("DOMContentLoaded", () => {
+    try {
+        const response = await fetch(url);
+        const html = await response.text();
         
-        // Carrega o header e o footer
-        loadComponent('header.html', 'header-placeholder');
-        loadComponent('footer.html', 'footer-placeholder');
+        // 2. Insere o HTML e REMOVE a classe de loading DEPOIS
+        placeholder.innerHTML = html;
+        placeholder.classList.remove('shimmer');
 
-        // Pega o elemento do botão
-        const backToTopButton = document.getElementById('back-to-top');
+    } catch (error) {
+        console.error(`Erro ao carregar o componente ${url}:`, error);
+        // Remove o loading mesmo em caso de erro
+        placeholder.classList.remove('shimmer');
+    }
+}
 
-        // Adiciona um único listener para o evento de scroll
-        window.addEventListener('scroll', () => {
-            // 1. Lida com as animações de fade-in das seções
-            handleScroll();
-
-            // 2. Lógica para mostrar/esconder o botão "Voltar ao Topo"
-            if (window.scrollY > 300) { // Mostra o botão após rolar 300px
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
+        // Função para o menu (será chamada pelo onclick no header.html)
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar) {
+                sidebar.classList.toggle("active");
             }
-        });
+        }
 
-        // Executa a função uma vez no carregamento para animar o que já está visível
-        handleScroll();
+        // Quando a página termina de carregar...
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Inicializa a biblioteca AOS
+            AOS.init({
+                duration: 800, // Duração da animação em milissegundos
+                once: true // A animação só acontece uma vez
+            });
 
-        // Adiciona o listener de clique no botão "Voltar ao Topo"
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Rolagem suave para o topo
+            // 2. Carrega o header e o footer
+            loadComponent('header.html', 'header-placeholder');
+            loadComponent('footer.html', 'footer-placeholder');
+
+            // 3. Pega o elemento do botão "Voltar ao Topo"
+            const backToTopButton = document.getElementById('back-to-top');
+
+            // 4. Adiciona um único listener para o evento de scroll
+            window.addEventListener('scroll', () => {
+                // Lógica para mostrar/esconder o botão "Voltar ao Topo"
+                if (window.scrollY > 300) { // Mostra o botão após rolar 300px
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            // 5. Adiciona o listener de clique no botão "Voltar ao Topo"
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Rolagem suave para o topo
+                });
             });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
