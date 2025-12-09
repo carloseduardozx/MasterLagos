@@ -1,4 +1,6 @@
-/* Reset básico */
+/* ===================================================================
+   CONFIGURAÇÕES GERAIS E RESET
+   =================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +15,29 @@ body {
     transition: background-color 0.3s ease;
 }
 
-/* Topbar */
+html {
+    scroll-behavior: smooth; /* Rolagem suave para todos os links âncora */
+}
+
+/* Barra de rolagem personalizada */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #4a6b57;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3a5545;
+}
+
+
+/* ===================================================================
+   HEADER E MENU LATERAL (Válido para todas as páginas)
+   =================================================================== */
 .topbar {
     position: fixed;
     top: 0;
@@ -40,7 +64,6 @@ body {
     left: 20px;
 }
 
-/* Menu lateral */
 .sidebar {
     position: fixed;
     left: -250px;
@@ -84,7 +107,47 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero Section */
+/* ===================================================================
+   BOTÃO VOLTAR AO TOPO
+   =================================================================== */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #4a6b57; /* Cor do seu site */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    opacity: 0; /* Escondido por padrão */
+    visibility: hidden; /* Escondido por padrão */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Fica por cima de outros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Classe que torna o botão visível */
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Efeito hover no desktop */
+#back-to-top:hover {
+    background-color: #3a5545; /* Tom mais escuro no hover */
+    transform: scale(1.1); /* Aumenta um pouco no hover */
+}
+
+
+/* ===================================================================
+   ESTILOS DA PÁGINA INICIAL (index.html)
+   =================================================================== */
 .hero {
     background-image: url("imagens/fundo.png");
     background-size: cover;
@@ -141,31 +204,7 @@ body {
     animation: fadeInUp 2s ease-out forwards;
 }
 
-/* Animação de entrada */
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Nova seção com imagem à esquerda */
-.image-section {
+.image-section, .about-section, .services-section {
     padding: 60px 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -173,21 +212,19 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.image-section .container {
+.image-section .container, .about-section .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.image-content {
+.image-content, .about-content {
     display: flex;
-    align-items: center;
     gap: 40px;
+    align-items: flex-start;
 }
 
-.image-wrapper {
+.image-wrapper, .about-text, .about-map {
     flex: 1;
-    border-radius: 15px;
-    overflow: hidden;
 }
 
 .image-wrapper img {
@@ -200,36 +237,33 @@ body {
 }
 
 .text-content {
-    flex: 1;
     text-align: left;
 }
 
-.text-content h2 {
+.text-content h2, .about-map h2 {
     font-size: 2em;
     margin-bottom: 20px;
     color: #333;
 }
 
-.text-content p {
+.text-content p, .about-text p {
     font-size: 1em;
     line-height: 1.8;
     color: #555;
+    margin-bottom: 20px;
 }
 
-/* Seção Serviços */
+/* Seção Serviços - Layout Desktop */
 .services-section {
-    padding: 160px 20px;
     background-color: #f9f9f9;
-    border-radius: 10px;
-    margin: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 160px 20px;
     position: relative;
     overflow: hidden;
 }
 
 .services-section h2 {
     text-align: center;
-    margin-bottom: 10px; /* Título ainda mais para cima */
+    margin-bottom: 10px;
     position: relative;
     top: -125px;
     font-size: 2em;
@@ -257,111 +291,23 @@ body {
     position: absolute;
 }
 
-.service-ball a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px;
-}
-
 .service-ball:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #3a5545;
 }
 
-/* Tamanhos das bolas */
-.service-ball.large {
-    width: 180px;
-    height: 180px;
-}
+.service-ball.large { width: 180px; height: 180px; }
+.service-ball.medium { width: 140px; height: 140px; }
+.service-ball.small { width: 120px; height: 120px; }
 
-.service-ball.medium {
-    width: 140px;
-    height: 140px;
-}
-
-.service-ball.small {
-    width: 120px;
-    height: 120px;
-}
-
-/* Posicionamento das bolas - Layout espalhado harmonioso */
-.service-ball:nth-child(1) { /* lagos artificiais */
-    top: -200px;
-    left: 5%;
-}
-
-.service-ball:nth-child(2) { /* decks de madeira */
-    top: 35%;
-    right: 12%;
-}
-
-.service-ball:nth-child(3) { /* pergolados */
-    top: 60%;
-    left: 18%;
-}
-
-.service-ball:nth-child(4) { /* piscinas naturais */
-    top: -100px;
-    right: 28%;
-}
-
-.service-ball:nth-child(5) { /* paineis de mandeira */
-    top: -60px;
-    left: 43%;
-}
-
-.service-ball:nth-child(6) { /* grutas */
-    top: -150px;
-    right: 7%;
-}
-
-.service-ball:nth-child(7) { /* rochas artificiais */
-    top: -100px;
-    left: 28%;
-}
-
-/* Seção Sobre Nós */
-.about-section {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.about-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-content {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-text p {
-    margin-bottom: 20px;
-}
-
-.about-map {
-    flex: 1;
-}
-
-.about-map h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.map-container {
-    position: relative;
-}
+.service-ball:nth-child(1) { top: -200px; left: 5%; }
+.service-ball:nth-child(2) { top: 35%; right: 12%; }
+.service-ball:nth-child(3) { top: 60%; left: 18%; }
+.service-ball:nth-child(4) { top: -100px; right: 28%; }
+.service-ball:nth-child(5) { top: -60px; left: 43%; }
+.service-ball:nth-child(6) { top: -150px; right: 7%; }
+.service-ball:nth-child(7) { top: -100px; left: 28%; }
 
 .map-container iframe {
     width: 100%;
@@ -377,28 +323,85 @@ body {
     text-align: center;
 }
 
-/* Animação de fade-in */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+/* ===================================================================
+   ESTILOS DAS PÁGINAS DE SERVIÇO (decks.html, lagos.html, etc.)
+   =================================================================== */
+.container.conteudo {
+    max-width: 1200px;
+    margin: 100px auto 40px; /* Margem top para não ficar sob o header fixo */
+    padding: 0 20px;
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-out forwards;
+.container.conteudo h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
 }
 
-/* Esconder as seções inicialmente (exceto a seção do meio) */
-section:not(.image-section) {
-    opacity: 0;
+.galeria-container {
+    margin: 45px 0;
 }
 
-/* Rodapé */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 22px;
+}
+
+.galeria-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.galeria-grid img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.descricao-box {
+    background: #f3f3f3;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    margin-top: 40px;
+}
+
+.descricao-box h4 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #4a6b57;
+}
+
+
+/* ===================================================================
+   COMPONENTES GERAIS (FOOTER, BOTÕES, ANIMAÇÕES)
+   =================================================================== */
 .footer {
     background-color: #000;
     color: #fff;
@@ -443,10 +446,6 @@ section:not(.image-section) {
     gap: 10px;
 }
 
-.social-links li {
-    display: inline-block;
-}
-
 .social-links a {
     color: #fff;
     font-size: 1.2em;
@@ -464,12 +463,11 @@ section:not(.image-section) {
     color: #ccc;
 }
 
-/* Botão WhatsApp */
 .whatsapp-button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: #25D366; /* Verde oficial do WhatsApp */
+    background-color: #25D366;
     color: white !important;
     padding: 15px 25px;
     border-radius: 30px;
@@ -482,107 +480,59 @@ section:not(.image-section) {
 }
 
 .whatsapp-button:hover {
-    background-color: #128C7E; /* Verde mais escuro no hover */
+    background-color: #128C7E;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
 }
 
-.whatsapp-button i {
-    font-size: 1.4em;
-}
+/* Animações */
+@keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Consistência no footer */
-.social-links .fa-whatsapp {
-    color: #25D366 !important;
-    transition: color 0.3s ease;
-}
+.fade-in { animation: fadeIn 1s ease-out forwards; }
+section:not(.image-section) { opacity: 0; } /* Esconder seções para animação de scroll */
 
-.social-links .fa-whatsapp:hover {
-    color: #128C7E !important;
-}
 
-/* Responsividade */
+/* ===================================================================
+   RESPONSIVIDADE
+   =================================================================== */
 @media (max-width: 768px) {
-    .image-content {
-        flex-direction: column;
-        text-align: center;
-    }
+    /* Ajustes gerais */
+    .logo-container { padding-left: 20px; padding-right: 20px; }
+    .logo { width: 200px; }
+    .hero-text h1 { font-size: 1.8em; }
+    .description { font-size: 1em; }
+    .image-content, .about-content { flex-direction: column; }
+    .text-content { text-align: center; }
+    .image-wrapper img { max-width: 100%; }
+    .about-map iframe { height: 250px; }
 
-    .text-content {
-        text-align: center;
-    }
+    /* Footer */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; }
+    .footer-section { text-align: center; }
+    .social-links { justify-content: center; }
 
-    .image-wrapper img {
-        max-width: 100%;
-    }
-
-    .about-content {
-        flex-direction: column;
-    }
-
-    .about-map iframe {
-        height: 250px;
-    }
-
-    .map-text {
-        margin-top: 10px;
-    }
-
-    .logo-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .logo {
-        width: 200px;
-    }
-
-    .hero-text h1 {
-        font-size: 1.8em;
-    }
-
-    .description {
-        font-size: 1em;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-section {
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
+    /* Seção de Serviços - Layout Mobile */
+    .services-section h2 { top: -20px; font-size: 1.8em; }
     .services-grid {
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        justify-items: center;
+        padding-top: 20px;
+        position: relative;
     }
-
     .service-ball {
-        position: static;
-        margin-bottom: 20px;
+        position: static !important;
+        top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+        width: 120px !important; height: 120px !important;
+        font-size: 0.9em; margin-bottom: 0;
     }
-
-    .service-ball.large {
-        width: 120px;
-        height: 120px;
-    }
-
-    .service-ball.medium {
-        width: 100px;
-        height: 100px;
-    }
-
-    .service-ball.small {
-        width: 80px;
-        height: 80px;
-    }
-
-
+    .services-grid .service-ball:nth-child(1) { grid-column: 1 / -1; width: 180px !important; height: 180px !important; font-size: 1em; }
+    .services-grid .service-ball:nth-child(2) { justify-self: end; }
+    .services-grid .service-ball:nth-child(3) { justify-self: start; width: 100px !important; height: 100px !important; }
+    .services-grid .service-ball:nth-child(5) { width: 100px !important; height: 100px !important; }
+    .services-grid .service-ball:nth-child(6) { grid-column: 1 / -1; width: 160px !important; height: 160px !important; }
+    .services-grid .service-ball:nth-child(7) { justify-self: end; }
 }
